@@ -1,0 +1,3668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendOTPForCardSave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOTPForCardSaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendOTPForCardSaveResult" type="tns:FCSendOTPForCardSaveResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCSendOTPForCardSaveResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidPhone" />
+          <s:enumeration value="TooManyOTPSent" />
+          <s:enumeration value="TooQuickOTPSent" />
+          <s:enumeration value="SMSCouldNotSentTryAgain" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+          <s:enumeration value="IVRSuccess" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SaveCreditCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardHolderName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CardMonth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CardYear" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VerificationOTP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCreditCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveCreditCardResult" type="tns:FCSaveCreditCardResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCSaveCreditCardResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCSaveCardResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCSaveCardResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="InvalidCardNum" />
+          <s:enumeration value="InvalidMonth" />
+          <s:enumeration value="InvalidYear" />
+          <s:enumeration value="InvalidClientIP" />
+          <s:enumeration value="DuplicateCard" />
+          <s:enumeration value="InvalidPhone" />
+          <s:enumeration value="NoOTPSentForVerification" />
+          <s:enumeration value="InvalidOTP" />
+          <s:enumeration value="TooLateOTPVerification" />
+          <s:enumeration value="TooMuchOTPVerificationTried" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SaveCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TCKNVKN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomField1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomField2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomField3" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveCustomerResult" type="tns:FCSaveCustomerResultCode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCSaveCustomerResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="FindCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FindCustomerResult" type="tns:FCFindCustomerResultCode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCFindCustomerResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Found" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="NotFound" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SavePOSInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CurrencyCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubMerchantorMerchantGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIUserPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APICancelUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APICancelUserPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoreKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GatewayAddress3D" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtraInfo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsDefault" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsMOTO" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantPosInfo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardPrograms" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SupportAmex" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="DefaultAmexPOS" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="NonInstallmentPOS" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="ForeignPOS" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="ForeignAmexPOS" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Always3D" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Customer3DManualCard" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Customer3DStoredCard" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SavePOSInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SavePOSInfoResult" type="tns:FCSavePOSInfoResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCSavePOSInfoResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCSavePOSInfoResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCSavePOSInfoResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidParameter" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetPOSInfoList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CurrencyCode" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsActive" nillable="true" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantPosInfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPOSInfoListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPOSInfoListResult" type="tns:FCPOSInfoList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCPOSInfoList">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCGetPOSInfoListResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSInfoList" type="tns:ArrayOfFCPOSInfoEx" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCGetPOSInfoListResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfFCPOSInfoEx">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FCPOSInfoEx" nillable="true" type="tns:FCPOSInfoEx" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FCPOSInfoEx">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:FCPOSInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CardPrograms" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SupportAmex" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="DefaultAmexPOS" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="NonInstallmentPOS" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ForeignPOS" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ForeignAmexPOS" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FCPOSInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrencyCode" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubMerchantOrMerchantGroup" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExtraInfo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDefault" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMOTO" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantPosInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PaymentPlanCardUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldCardToken" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newCardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newCardHolderName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="newCardMonth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="newCardYear" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaymentPlanCardUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentPlanCardUpdateResult" type="tns:FCUpdateCreditCardResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCUpdateCreditCardResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCUpdateCardResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCUpdateCardResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="CustomerNotFound" />
+          <s:enumeration value="CardNotFound" />
+          <s:enumeration value="InvalidCardNum" />
+          <s:enumeration value="InvalidMonth" />
+          <s:enumeration value="InvalidYear" />
+          <s:enumeration value="DuplicateCard" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCreditCardList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCreditCardListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCreditCardListResult" type="tns:FCGetCreditCardListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCGetCreditCardListResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCGetCreditCardListResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardList" type="tns:ArrayOfFCCreditCard" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCGetCreditCardListResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="CardNotFound" />
+          <s:enumeration value="CardFoundOTPRequired" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="InvalidState" />
+          <s:enumeration value="InvalidOTP" />
+          <s:enumeration value="TooMuchOTPVerificationTried" />
+          <s:enumeration value="InvalidPhone" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfFCCreditCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FCCreditCard" nillable="true" type="tns:FCCreditCard" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FCCreditCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MaskedCardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsExpired" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConsentApproved" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FinishPaymentRequired" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpiresIn90Days" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastYear" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastMonth" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBankOfBINNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBankOfBINNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBankOfBINNumberResult" type="tns:FCGetBankOfBINResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCGetBankOfBINResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCGetBankOfBINResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDebitCard" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardProgramName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBusinessCard" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCGetBankOfBINResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="NotFound" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SendOTPForCardList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOTPForCardListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendOTPForCardListResult" type="tns:FCSendOTPForCardListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCSendOTPForCardListResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidState" />
+          <s:enumeration value="InvalidPhone" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="TooManyOTPSent" />
+          <s:enumeration value="TooQuickOTPSent" />
+          <s:enumeration value="SMSCouldNotSentTryAgain" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+          <s:enumeration value="IVRSuccess" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="VerifyAndGetCardList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VerificationOTP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyAndGetCardListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerifyAndGetCardListResult" type="tns:FCGetCreditCardListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCreditCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCreditCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCreditCardResult" type="tns:FCDeleteCardResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCDeleteCardResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="CustomerNotFound" />
+          <s:enumeration value="InvalidCardToken" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="DeleteAllCardsOfCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllCardsOfCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAllCardsOfCustomerResult" type="tns:FCDeleteAllCardsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCDeleteAllCardsResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="CustomerNotFound" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="LoyaltyPointInquiry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtParam" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoyaltyPointInquiryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoyaltyPointInquiryResult" type="tns:FCLoyaltyPointInquiryResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCLoyaltyPointInquiryResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:FCProcessPaymentResultBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="LoyaltyPointInfo" type="tns:FCPointInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FCProcessPaymentResultBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCProcessPaymentResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAuthCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThreeDRedirectURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardHolderName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReferenceNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankHostDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCProcessPaymentResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidAmount" />
+          <s:enumeration value="InvalidInstallment" />
+          <s:enumeration value="CardRefused" />
+          <s:enumeration value="CardExpired" />
+          <s:enumeration value="InvalidBankPosId" />
+          <s:enumeration value="RefTransactionNotFound" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+          <s:enumeration value="CVVRequired" />
+          <s:enumeration value="CardNotFound" />
+          <s:enumeration value="CustomerNotFound" />
+          <s:enumeration value="OTPRequired" />
+          <s:enumeration value="CVVAndOTPRequired" />
+          <s:enumeration value="OTPCouldNotSend" />
+          <s:enumeration value="InvalidOTP" />
+          <s:enumeration value="TooLateOTPVerification" />
+          <s:enumeration value="TooMuchOTPVerificationTried" />
+          <s:enumeration value="TooManyOTPSent" />
+          <s:enumeration value="TooQuickOTPSent" />
+          <s:enumeration value="ThreeDSecureURLCreated" />
+          <s:enumeration value="ThreeDValidationFailed" />
+          <s:enumeration value="InvalidReturnURL" />
+          <s:enumeration value="InvalidTransactionId" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="FCPointInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardProgramName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoyaltyPointInquiryWithCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastMonth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardHolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtParam" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoyaltyPointInquiryWithCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoyaltyPointInquiryWithCardResult" type="tns:FCLoyaltyPointInquiryWithCardResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCLoyaltyPointInquiryWithCardResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:FCProcessPaymentWithCardResultBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="LoyaltyPointInfo" type="tns:FCPointInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FCProcessPaymentWithCardResultBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCProcessPaymentWithCardResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAuthCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POSID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThreeDRedirectURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardHolderName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCProcessPaymentWithCardResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidAmount" />
+          <s:enumeration value="InvalidInstallment" />
+          <s:enumeration value="CardRefused" />
+          <s:enumeration value="CardExpired" />
+          <s:enumeration value="InvalidBankPosId" />
+          <s:enumeration value="RefTransactionNotFound" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+          <s:enumeration value="CVVRequired" />
+          <s:enumeration value="InvalidCardNum" />
+          <s:enumeration value="InvalidMonth" />
+          <s:enumeration value="InvalidYear" />
+          <s:enumeration value="InvalidCVV" />
+          <s:enumeration value="ThreeDSecureURLCreated" />
+          <s:enumeration value="ThreeDValidationFailed" />
+          <s:enumeration value="InvalidReturnURL" />
+          <s:enumeration value="InvalidTransactionId" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ProcessPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProcessType" type="tns:FCProcessType" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="InstallmentCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseLoyaltyPoints" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestOTP" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestCVV" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Request3D" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtCampaignInfo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCProcessType">
+        <s:restriction base="s:string">
+          <s:enumeration value="sales" />
+          <s:enumeration value="cancel" />
+          <s:enumeration value="refund" />
+          <s:enumeration value="preauth" />
+          <s:enumeration value="postauth" />
+          <s:enumeration value="release" />
+          <s:enumeration value="wireTransfer" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ProcessPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessPaymentResult" type="tns:FCProcessPaymentResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCProcessPaymentResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:FCProcessPaymentResultBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="UsedLoyaltyPoint" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ProcessPaymentWithCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProcessType" type="tns:FCProcessType" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastMonth" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CVV" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="InstallmentCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseLoyaltyPoints" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Request3D" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtCampaignInfo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardHolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessPaymentWithCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessPaymentWithCardResult" type="tns:FCProcessPaymentWithCardResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCProcessPaymentWithCardResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:FCProcessPaymentWithCardResultBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="UsedLoyaltyPoint" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PaymentInquiry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProcessType" type="tns:FCProcessType" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="InstallmentCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaymentInquiryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentInquiryResult" type="tns:FCPaymentInquiryResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCPaymentInquiryResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:FCProcessPaymentResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TotalRefund" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="TransactionDetailList" type="tns:ArrayOfFCTransactionDetail" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFCTransactionDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FCTransactionDetail" nillable="true" type="tns:FCTransactionDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FCTransactionDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAuthCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReferenceNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankHostDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FinishPaymentProcess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OTP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CVV" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishPaymentProcessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FinishPaymentProcessResult" type="tns:FCProcessPaymentResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishPaymentProcessWithCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastMonth" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CVV" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishPaymentProcessWithCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FinishPaymentProcessWithCardResult" type="tns:FCProcessPaymentWithCardResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateNotification">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="InstallmentCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="Hash" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateNotificationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateNotificationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartHostedPaymentProcess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProcessType" type="tns:PGProcessType" />
+            <s:element minOccurs="1" maxOccurs="1" name="ViewType" type="tns:PGViewType" />
+            <s:element minOccurs="1" maxOccurs="1" name="DesignType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseOneClickPayment" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustomerIsLoggedIn" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseIVRForCardEntry" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="BasketContent" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseLoyaltyPoints" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Use3DSecure" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestOTP" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestCVV" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseInstallment" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseCustomInstallments" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstallmentRateTable" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtraParam" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="PGProcessType">
+        <s:restriction base="s:string">
+          <s:enumeration value="PGWithLogin" />
+          <s:enumeration value="HostedPage" />
+          <s:enumeration value="HostedPrePayment" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PGViewType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Full" />
+          <s:enumeration value="Medium" />
+          <s:enumeration value="Compact" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="StartHostedPaymentProcessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartHostedPaymentProcessResult" type="tns:FCStartHostedPaymentProcessResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCStartHostedPaymentProcessResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCStartHostedPaymentProcessResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RedirectURL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCStartHostedPaymentProcessResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidPhone" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="InvalidAmount" />
+          <s:enumeration value="InvalidReturnURL" />
+          <s:enumeration value="InvalidTransactionId" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+          <s:enumeration value="InvalidParameter" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UpdateHostedPaymentProcess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Use3DSecure" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestOTP" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestCVV" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="BasketContent" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateHostedPaymentProcessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateHostedPaymentProcessResult" type="tns:FCUpdateHostedPaymentProcessResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCUpdateHostedPaymentProcessResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCUpdateHostedPaymentProcessResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalAmountWithInterest" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="InterestRate" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Installment" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaskCardNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RedirectURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentInstrument" type="tns:FCPaymentInstruments" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCUpdateHostedPaymentProcessResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="TransactionNotFound" />
+          <s:enumeration value="InvalidState" />
+          <s:enumeration value="InvalidAmount" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="FCPaymentInstruments">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="StoredCard" />
+          <s:enumeration value="NewCard" />
+          <s:enumeration value="BKMExpress" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="StartHostedAccountManagement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ViewType" type="tns:PGViewType" />
+            <s:element minOccurs="1" maxOccurs="1" name="DesignType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustomerIsLoggedIn" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseIVRForCardEntry" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtraParam" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartHostedAccountManagementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartHostedAccountManagementResult" type="tns:FCStartHostedAccountManagementResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCStartHostedAccountManagementResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCStartHostedAccountManagementResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RedirectURL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCStartHostedAccountManagementResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidPhone" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetHostedPaymentProcessStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHostedPaymentProcessStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHostedPaymentProcessStatusResult" type="tns:FCGetHostedPaymentProcessStatusResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCGetHostedPaymentProcessStatusResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCGetHostedPaymentProcessStatusResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="POSID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsedStoredCard" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="InstallmentCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalAmountWithInterest" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAuthCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaskedCardNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsedPointAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExtrCampInstallment" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReferenceNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankHostDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CardSavedAfterPayment" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentOption" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCGetHostedPaymentProcessStatusResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+          <s:enumeration value="TransactionNotFound" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SavePaymentPlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentPlanId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RecurringType" type="tns:FCRecurringType" />
+            <s:element minOccurs="1" maxOccurs="1" name="Currency" type="tns:FCCurrency" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lines" type="tns:ArrayOfFCPaymentPlanLine" />
+            <s:element minOccurs="1" maxOccurs="1" name="TryDays" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoPayment" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCRecurringType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Week" />
+          <s:enumeration value="Month" />
+          <s:enumeration value="Year" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="FCCurrency">
+        <s:restriction base="s:string">
+          <s:enumeration value="TRY" />
+          <s:enumeration value="EUR" />
+          <s:enumeration value="USD" />
+          <s:enumeration value="GBP" />
+          <s:enumeration value="JPY" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfFCPaymentPlanLine">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FCPaymentPlanLine" nillable="true" type="tns:FCPaymentPlanLine" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FCPaymentPlanLine">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DueDate" type="tns:FCDate" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FCDate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Month" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Day" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SavePaymentPlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SavePaymentPlanResult" type="tns:FCSavePaymentPlanResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCSavePaymentPlanResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="CustomerNotFound" />
+          <s:enumeration value="CardNotFound" />
+          <s:enumeration value="CardNotSuitableForPaymentPlan" />
+          <s:enumeration value="InvalidPaymentPlanId" />
+          <s:enumeration value="InvalidLineCount" />
+          <s:enumeration value="InvalidDueDate" />
+          <s:enumeration value="InvalidAmount" />
+          <s:enumeration value="InvalidBankPosId" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetPaymentPlanList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentPlanId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OnlyNotProcessed" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="OnlyProcessed" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartMonth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="EndYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="EndMonth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Page" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SortField" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SortDesc" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPaymentPlanListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPaymentPlanListResult" type="tns:FCPaymentPlanList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCPaymentPlanList">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:FCGetPaymentPlanListResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TotalRecordCount" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PageCount" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentPage" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PageRecordCount" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FCGetPaymentPlanListResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCGetPaymentPlanListResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentPlanLines" type="tns:ArrayOfFCPaymentPlanLineWP" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCGetPaymentPlanListResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="CustomerNotFound" />
+          <s:enumeration value="InvalidPaymentPlanId" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfFCPaymentPlanLineWP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FCPaymentPlanLineWP" nillable="true" type="tns:FCPaymentPlanLineWP" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FCPaymentPlanLineWP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentPlanId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentPlanLineId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecurringType" type="tns:FCRecurringType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DueDate" type="tns:FCDate" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPaid" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentDate" type="tns:FCDate" />
+          <s:element minOccurs="1" maxOccurs="1" name="CardWillExpire" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaskedCardNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="POSID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AutomaticPayment" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveBlackListItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreditCardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TCKN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReasonCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveBlackListItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveBlackListItemResult" type="tns:FCSaveBlackListItemResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCSaveBlackListItemResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidCardNumber" />
+          <s:enumeration value="InvalidEmail" />
+          <s:enumeration value="InvalidPhone" />
+          <s:enumeration value="InvalidTCKN" />
+          <s:enumeration value="InvalidClientIP" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreatePaymentLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseOneClickPayment" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Use3DSecure" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestOTP" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestCVV" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseInstallment" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseCustomInstallments" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstallmentRateTable" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtraParam" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SendVia" type="tns:FCPaymentLinkSendType" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LinkExpireHours" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCPaymentLinkSendType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Email" />
+          <s:enumeration value="SMS" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreatePaymentLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreatePaymentLinkResult" type="tns:FCCreatePaymentLinkResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCCreatePaymentLinkResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCCreatePaymentLinkResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCCreatePaymentLinkResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="CustomerNotFound" />
+          <s:enumeration value="InvalidCustomerEmail" />
+          <s:enumeration value="InvalidAmount" />
+          <s:enumeration value="EmailMismatch" />
+          <s:enumeration value="EmailCouldNotSent" />
+          <s:enumeration value="BankAccountNotActive" />
+          <s:enumeration value="CurrencyNotFound" />
+          <s:enumeration value="PaymentPlanNotFound" />
+          <s:enumeration value="SMSCouldNotSent" />
+          <s:enumeration value="InvalidCustomerPhone" />
+          <s:enumeration value="TooManyRequestSent" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+          <s:enumeration value="InvalidTransactionId" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreatePaymentLinkForPaymentPlan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseOneClickPayment" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PaymentPlanLineId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Use3DSecure" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestOTP" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestCVV" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseInstallment" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseCustomInstallments" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="InstallmentRateTable" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SendVia" type="tns:FCPaymentLinkSendType" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LinkExpireHours" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePaymentLinkForPaymentPlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreatePaymentLinkForPaymentPlanResult" type="tns:FCCreatePaymentLinkResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCardSaveLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SendVia" type="tns:FCCardSaveLinkSendType" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POSConfiguration" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LinkExpireHours" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtraParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCCardSaveLinkSendType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Email" />
+          <s:enumeration value="SMS" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateCardSaveLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateCardSaveLinkResult" type="tns:FCCreateCardSaveLinkResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCCreateCardSaveLinkResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCCreateCardSaveLinkResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCCreateCardSaveLinkResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="CustomerNotFound" />
+          <s:enumeration value="InvalidCustomerEmail" />
+          <s:enumeration value="EmailCouldNotSent" />
+          <s:enumeration value="EmailMismatch" />
+          <s:enumeration value="SMSCouldNotSent" />
+          <s:enumeration value="InvalidCustomerPhone" />
+          <s:enumeration value="TooManyRequestSent" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetTransactionList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransType" type="tns:FCTransType" />
+            <s:element minOccurs="1" maxOccurs="1" name="OnlySuccess" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="OnlyNotSuccess" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Page" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SortField" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SortDesc" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FCTransType">
+        <s:restriction base="s:string">
+          <s:enumeration value="sales" />
+          <s:enumeration value="cancel" />
+          <s:enumeration value="refund" />
+          <s:enumeration value="preauth" />
+          <s:enumeration value="postauth" />
+          <s:enumeration value="bonusQry" />
+          <s:enumeration value="release" />
+          <s:enumeration value="wireTransfer" />
+          <s:enumeration value="all" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetTransactionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransactionListResult" type="tns:FCGetTransactionListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCGetTransactionListResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCGetTransactionListResultCode" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRecordCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentPage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageRecordCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Transactions" type="tns:ArrayOfFCTransaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCGetTransactionListResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfFCTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FCTransaction" nillable="true" type="tns:FCTransaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FCTransaction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Is3D" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobilexpressTransId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerTCKN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantCustomerGroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerVal1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerVal2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerVal3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BaseAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="InterestAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="EffectiveTotal" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="RewardAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Installment" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlusInstallmentCount" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsStoredCard" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardNumLog" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankOfCard" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDebit" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBusinessCard" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSuccess" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBkmExpress" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPostauthed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCancelled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRefunded" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRefund" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAllRefunded" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReferenceId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentPlanId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentPlanLineId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantPaymentItem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="POSID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAuthCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankReferenceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankTransId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMOTO" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BatchId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BatchExeId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateMemberEmail" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TokenInquiry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TokenInquiryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TokenInquiryResult" type="tns:FCTokenInquiryResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCTokenInquiryResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCTokenInquiryResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCTokenInquiryResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidCardNumber" />
+          <s:enumeration value="CardNotFound" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CardInfoInquiry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardToken" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CardInfoInquiryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardInfoInquiryResult" type="tns:FCCardInfoInquiryResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCCardInfoInquiryResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCCardInfoInquiryResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardInfo" type="tns:FCCreditCard" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCCardInfoInquiryResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="CardNotFound" />
+          <s:enumeration value="InvalidCustomerID" />
+          <s:enumeration value="InvalidToken" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="WireTransferRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="APIpassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BankAccountID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerTCKN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerVal1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerVal2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerVal3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddressCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientUserAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtParam" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WireTransferRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WireTransferRequestResult" type="tns:FCWireTransferRequestResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FCWireTransferRequestResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:FCWireTransferRequestResultCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilexpressTransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAccountID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FCWireTransferRequestResultCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="InvalidAmount" />
+          <s:enumeration value="InvalidTransactionId" />
+          <s:enumeration value="DuplicateTransationId" />
+          <s:enumeration value="RefusedByFraudPrevention" />
+          <s:enumeration value="InvalidBankAccountId" />
+          <s:enumeration value="RefTransactionNotFound" />
+          <s:enumeration value="AuthenticationError" />
+          <s:enumeration value="ServerError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="FCSendOTPForCardSaveResult" type="tns:FCSendOTPForCardSaveResult" />
+      <s:element name="FCSaveCreditCardResult" nillable="true" type="tns:FCSaveCreditCardResult" />
+      <s:element name="FCSaveCustomerResultCode" type="tns:FCSaveCustomerResultCode" />
+      <s:element name="FCFindCustomerResultCode" type="tns:FCFindCustomerResultCode" />
+      <s:element name="FCSavePOSInfoResult" nillable="true" type="tns:FCSavePOSInfoResult" />
+      <s:element name="FCUpdateCreditCardResult" nillable="true" type="tns:FCUpdateCreditCardResult" />
+      <s:element name="FCGetCreditCardListResult" nillable="true" type="tns:FCGetCreditCardListResult" />
+      <s:element name="FCGetBankOfBINResult" nillable="true" type="tns:FCGetBankOfBINResult" />
+      <s:element name="FCSendOTPForCardListResult" type="tns:FCSendOTPForCardListResult" />
+      <s:element name="FCDeleteCardResult" type="tns:FCDeleteCardResult" />
+      <s:element name="FCDeleteAllCardsResult" type="tns:FCDeleteAllCardsResult" />
+      <s:element name="FCLoyaltyPointInquiryResult" nillable="true" type="tns:FCLoyaltyPointInquiryResult" />
+      <s:element name="FCLoyaltyPointInquiryWithCardResult" nillable="true" type="tns:FCLoyaltyPointInquiryWithCardResult" />
+      <s:element name="FCProcessPaymentResult" nillable="true" type="tns:FCProcessPaymentResult" />
+      <s:element name="FCProcessPaymentWithCardResult" nillable="true" type="tns:FCProcessPaymentWithCardResult" />
+      <s:element name="FCPaymentInquiryResult" nillable="true" type="tns:FCPaymentInquiryResult" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="FCStartHostedPaymentProcessResult" nillable="true" type="tns:FCStartHostedPaymentProcessResult" />
+      <s:element name="FCUpdateHostedPaymentProcessResult" nillable="true" type="tns:FCUpdateHostedPaymentProcessResult" />
+      <s:element name="FCStartHostedAccountManagementResult" nillable="true" type="tns:FCStartHostedAccountManagementResult" />
+      <s:element name="FCGetHostedPaymentProcessStatusResult" nillable="true" type="tns:FCGetHostedPaymentProcessStatusResult" />
+      <s:element name="FCPaymentPlanList" nillable="true" type="tns:FCPaymentPlanList" />
+      <s:element name="FCSaveBlackListItemResult" type="tns:FCSaveBlackListItemResult" />
+      <s:element name="FCCreatePaymentLinkResult" nillable="true" type="tns:FCCreatePaymentLinkResult" />
+      <s:element name="FCCreateCardSaveLinkResult" nillable="true" type="tns:FCCreateCardSaveLinkResult" />
+      <s:element name="FCGetTransactionListResult" nillable="true" type="tns:FCGetTransactionListResult" />
+      <s:element name="FCTokenInquiryResult" nillable="true" type="tns:FCTokenInquiryResult" />
+      <s:element name="FCCardInfoInquiryResult" nillable="true" type="tns:FCCardInfoInquiryResult" />
+      <s:element name="FCWireTransferRequestResult" nillable="true" type="tns:FCWireTransferRequestResult" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendOTPForCardSaveSoapIn">
+    <wsdl:part name="parameters" element="tns:SendOTPForCardSave" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPForCardSaveSoapOut">
+    <wsdl:part name="parameters" element="tns:SendOTPForCardSaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveCreditCardSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="SaveCreditCardSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveCustomer" />
+  </wsdl:message>
+  <wsdl:message name="SaveCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:FindCustomer" />
+  </wsdl:message>
+  <wsdl:message name="FindCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:FindCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="SavePOSInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SavePOSInfo" />
+  </wsdl:message>
+  <wsdl:message name="SavePOSInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SavePOSInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPOSInfoListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPOSInfoList" />
+  </wsdl:message>
+  <wsdl:message name="GetPOSInfoListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPOSInfoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaymentPlanCardUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:PaymentPlanCardUpdate" />
+  </wsdl:message>
+  <wsdl:message name="PaymentPlanCardUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:PaymentPlanCardUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditCardListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCreditCardList" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditCardListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCreditCardListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBankOfBINNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBankOfBINNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetBankOfBINNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBankOfBINNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPForCardListSoapIn">
+    <wsdl:part name="parameters" element="tns:SendOTPForCardList" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPForCardListSoapOut">
+    <wsdl:part name="parameters" element="tns:SendOTPForCardListResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifyAndGetCardListSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifyAndGetCardList" />
+  </wsdl:message>
+  <wsdl:message name="VerifyAndGetCardListSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifyAndGetCardListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCreditCardSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCreditCardSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllCardsOfCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllCardsOfCustomer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllCardsOfCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllCardsOfCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoyaltyPointInquirySoapIn">
+    <wsdl:part name="parameters" element="tns:LoyaltyPointInquiry" />
+  </wsdl:message>
+  <wsdl:message name="LoyaltyPointInquirySoapOut">
+    <wsdl:part name="parameters" element="tns:LoyaltyPointInquiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoyaltyPointInquiryWithCardSoapIn">
+    <wsdl:part name="parameters" element="tns:LoyaltyPointInquiryWithCard" />
+  </wsdl:message>
+  <wsdl:message name="LoyaltyPointInquiryWithCardSoapOut">
+    <wsdl:part name="parameters" element="tns:LoyaltyPointInquiryWithCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessPayment" />
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentWithCardSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessPaymentWithCard" />
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentWithCardSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessPaymentWithCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaymentInquirySoapIn">
+    <wsdl:part name="parameters" element="tns:PaymentInquiry" />
+  </wsdl:message>
+  <wsdl:message name="PaymentInquirySoapOut">
+    <wsdl:part name="parameters" element="tns:PaymentInquiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="FinishPaymentProcessSoapIn">
+    <wsdl:part name="parameters" element="tns:FinishPaymentProcess" />
+  </wsdl:message>
+  <wsdl:message name="FinishPaymentProcessSoapOut">
+    <wsdl:part name="parameters" element="tns:FinishPaymentProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="FinishPaymentProcessWithCardSoapIn">
+    <wsdl:part name="parameters" element="tns:FinishPaymentProcessWithCard" />
+  </wsdl:message>
+  <wsdl:message name="FinishPaymentProcessWithCardSoapOut">
+    <wsdl:part name="parameters" element="tns:FinishPaymentProcessWithCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateNotificationSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateNotification" />
+  </wsdl:message>
+  <wsdl:message name="ValidateNotificationSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartHostedPaymentProcessSoapIn">
+    <wsdl:part name="parameters" element="tns:StartHostedPaymentProcess" />
+  </wsdl:message>
+  <wsdl:message name="StartHostedPaymentProcessSoapOut">
+    <wsdl:part name="parameters" element="tns:StartHostedPaymentProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHostedPaymentProcessSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateHostedPaymentProcess" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHostedPaymentProcessSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateHostedPaymentProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartHostedAccountManagementSoapIn">
+    <wsdl:part name="parameters" element="tns:StartHostedAccountManagement" />
+  </wsdl:message>
+  <wsdl:message name="StartHostedAccountManagementSoapOut">
+    <wsdl:part name="parameters" element="tns:StartHostedAccountManagementResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHostedPaymentProcessStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHostedPaymentProcessStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetHostedPaymentProcessStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHostedPaymentProcessStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SavePaymentPlanSoapIn">
+    <wsdl:part name="parameters" element="tns:SavePaymentPlan" />
+  </wsdl:message>
+  <wsdl:message name="SavePaymentPlanSoapOut">
+    <wsdl:part name="parameters" element="tns:SavePaymentPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentPlanListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPaymentPlanList" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentPlanListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPaymentPlanListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveBlackListItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveBlackListItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveBlackListItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveBlackListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePaymentLink" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePaymentLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentLinkForPaymentPlanSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePaymentLinkForPaymentPlan" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentLinkForPaymentPlanSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePaymentLinkForPaymentPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardSaveLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCardSaveLink" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardSaveLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCardSaveLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransactionList" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransactionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TokenInquirySoapIn">
+    <wsdl:part name="parameters" element="tns:TokenInquiry" />
+  </wsdl:message>
+  <wsdl:message name="TokenInquirySoapOut">
+    <wsdl:part name="parameters" element="tns:TokenInquiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardInfoInquirySoapIn">
+    <wsdl:part name="parameters" element="tns:CardInfoInquiry" />
+  </wsdl:message>
+  <wsdl:message name="CardInfoInquirySoapOut">
+    <wsdl:part name="parameters" element="tns:CardInfoInquiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="WireTransferRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:WireTransferRequest" />
+  </wsdl:message>
+  <wsdl:message name="WireTransferRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:WireTransferRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPForCardSaveHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPForCardSaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCSendOTPForCardSaveResult" />
+  </wsdl:message>
+  <wsdl:message name="SaveCreditCardHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="CardNumber" type="s:string" />
+    <wsdl:part name="CardHolderName" type="s:string" />
+    <wsdl:part name="CardMonth" type="s:string" />
+    <wsdl:part name="CardYear" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+    <wsdl:part name="VerificationOTP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveCreditCardHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCSaveCreditCardResult" />
+  </wsdl:message>
+  <wsdl:message name="SaveCustomerHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="TCKNVKN" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="CustomField1" type="s:string" />
+    <wsdl:part name="CustomField2" type="s:string" />
+    <wsdl:part name="CustomField3" type="s:string" />
+    <wsdl:part name="Active" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveCustomerHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCSaveCustomerResultCode" />
+  </wsdl:message>
+  <wsdl:message name="FindCustomerHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindCustomerHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCFindCustomerResultCode" />
+  </wsdl:message>
+  <wsdl:message name="SavePOSInfoHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="BankCode" type="s:string" />
+    <wsdl:part name="CurrencyCode" type="s:string" />
+    <wsdl:part name="MerchantID" type="s:string" />
+    <wsdl:part name="ClientID" type="s:string" />
+    <wsdl:part name="SubMerchantorMerchantGroup" type="s:string" />
+    <wsdl:part name="APIUserName" type="s:string" />
+    <wsdl:part name="APIUserPassword" type="s:string" />
+    <wsdl:part name="APICancelUserName" type="s:string" />
+    <wsdl:part name="APICancelUserPassword" type="s:string" />
+    <wsdl:part name="StoreKey" type="s:string" />
+    <wsdl:part name="ServiceAddress" type="s:string" />
+    <wsdl:part name="GatewayAddress3D" type="s:string" />
+    <wsdl:part name="ExtraInfo" type="s:string" />
+    <wsdl:part name="IsDefault" type="s:string" />
+    <wsdl:part name="IsActive" type="s:string" />
+    <wsdl:part name="IsMOTO" type="s:string" />
+    <wsdl:part name="MerchantPosInfo" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="CardPrograms" type="s:string" />
+    <wsdl:part name="SupportAmex" type="s:string" />
+    <wsdl:part name="DefaultAmexPOS" type="s:string" />
+    <wsdl:part name="NonInstallmentPOS" type="s:string" />
+    <wsdl:part name="ForeignPOS" type="s:string" />
+    <wsdl:part name="ForeignAmexPOS" type="s:string" />
+    <wsdl:part name="Always3D" type="s:string" />
+    <wsdl:part name="Customer3DManualCard" type="s:string" />
+    <wsdl:part name="Customer3DStoredCard" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SavePOSInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCSavePOSInfoResult" />
+  </wsdl:message>
+  <wsdl:message name="PaymentPlanCardUpdateHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="oldCardToken" type="s:string" />
+    <wsdl:part name="newCardNumber" type="s:string" />
+    <wsdl:part name="newCardHolderName" type="s:string" />
+    <wsdl:part name="newCardMonth" type="s:string" />
+    <wsdl:part name="newCardYear" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PaymentPlanCardUpdateHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCUpdateCreditCardResult" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditCardListHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditCardListHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCGetCreditCardListResult" />
+  </wsdl:message>
+  <wsdl:message name="GetBankOfBINNumberHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="BIN" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBankOfBINNumberHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCGetBankOfBINResult" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPForCardListHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendOTPForCardListHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCSendOTPForCardListResult" />
+  </wsdl:message>
+  <wsdl:message name="VerifyAndGetCardListHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="VerificationOTP" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VerifyAndGetCardListHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCGetCreditCardListResult" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCreditCardHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="CardToken" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCreditCardHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCDeleteCardResult" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllCardsOfCustomerHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllCardsOfCustomerHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCDeleteAllCardsResult" />
+  </wsdl:message>
+  <wsdl:message name="LoyaltyPointInquiryHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="CardToken" type="s:string" />
+    <wsdl:part name="POSID" type="s:string" />
+    <wsdl:part name="ExtParam" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoyaltyPointInquiryHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCLoyaltyPointInquiryResult" />
+  </wsdl:message>
+  <wsdl:message name="LoyaltyPointInquiryWithCardHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="CardNum" type="s:string" />
+    <wsdl:part name="LastYear" type="s:string" />
+    <wsdl:part name="LastMonth" type="s:string" />
+    <wsdl:part name="POSID" type="s:string" />
+    <wsdl:part name="CardHolder" type="s:string" />
+    <wsdl:part name="ExtParam" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoyaltyPointInquiryWithCardHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCLoyaltyPointInquiryWithCardResult" />
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentHttpPostIn">
+    <wsdl:part name="ProcessType" type="s:string" />
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="CardToken" type="s:string" />
+    <wsdl:part name="POSID" type="s:string" />
+    <wsdl:part name="TotalAmount" type="s:string" />
+    <wsdl:part name="InstallmentCount" type="s:string" />
+    <wsdl:part name="UseLoyaltyPoints" type="s:string" />
+    <wsdl:part name="RequestOTP" type="s:string" />
+    <wsdl:part name="RequestCVV" type="s:string" />
+    <wsdl:part name="Request3D" type="s:string" />
+    <wsdl:part name="ReturnURL" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+    <wsdl:part name="ExtCampaignInfo" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCProcessPaymentResult" />
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentWithCardHttpPostIn">
+    <wsdl:part name="ProcessType" type="s:string" />
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="CardNum" type="s:string" />
+    <wsdl:part name="LastYear" type="s:string" />
+    <wsdl:part name="LastMonth" type="s:string" />
+    <wsdl:part name="CVV" type="s:string" />
+    <wsdl:part name="POSID" type="s:string" />
+    <wsdl:part name="TotalAmount" type="s:string" />
+    <wsdl:part name="InstallmentCount" type="s:string" />
+    <wsdl:part name="UseLoyaltyPoints" type="s:string" />
+    <wsdl:part name="Request3D" type="s:string" />
+    <wsdl:part name="ReturnURL" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+    <wsdl:part name="ExtCampaignInfo" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="CustomerPhone" type="s:string" />
+    <wsdl:part name="CardHolder" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentWithCardHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCProcessPaymentWithCardResult" />
+  </wsdl:message>
+  <wsdl:message name="PaymentInquiryHttpPostIn">
+    <wsdl:part name="ProcessType" type="s:string" />
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="POSID" type="s:string" />
+    <wsdl:part name="TotalAmount" type="s:string" />
+    <wsdl:part name="InstallmentCount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PaymentInquiryHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCPaymentInquiryResult" />
+  </wsdl:message>
+  <wsdl:message name="FinishPaymentProcessHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="MobilexpressTransId" type="s:string" />
+    <wsdl:part name="OTP" type="s:string" />
+    <wsdl:part name="CVV" type="s:string" />
+    <wsdl:part name="POSID" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FinishPaymentProcessHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCProcessPaymentResult" />
+  </wsdl:message>
+  <wsdl:message name="FinishPaymentProcessWithCardHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="MobilexpressTransId" type="s:string" />
+    <wsdl:part name="CardNum" type="s:string" />
+    <wsdl:part name="LastYear" type="s:string" />
+    <wsdl:part name="LastMonth" type="s:string" />
+    <wsdl:part name="CVV" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FinishPaymentProcessWithCardHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCProcessPaymentWithCardResult" />
+  </wsdl:message>
+  <wsdl:message name="ValidateNotificationHttpPostIn">
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="MobilexpressTransId" type="s:string" />
+    <wsdl:part name="Result" type="s:string" />
+    <wsdl:part name="InstallmentCount" type="s:string" />
+    <wsdl:part name="TotalAmount" type="s:string" />
+    <wsdl:part name="Hash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateNotificationHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="StartHostedPaymentProcessHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="ProcessType" type="s:string" />
+    <wsdl:part name="ViewType" type="s:string" />
+    <wsdl:part name="DesignType" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="UseOneClickPayment" type="s:string" />
+    <wsdl:part name="CustomerIsLoggedIn" type="s:string" />
+    <wsdl:part name="UseIVRForCardEntry" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="TotalAmount" type="s:string" />
+    <wsdl:part name="BasketContent" type="s:string" />
+    <wsdl:part name="UseLoyaltyPoints" type="s:string" />
+    <wsdl:part name="Use3DSecure" type="s:string" />
+    <wsdl:part name="RequestOTP" type="s:string" />
+    <wsdl:part name="RequestCVV" type="s:string" />
+    <wsdl:part name="UseInstallment" type="s:string" />
+    <wsdl:part name="UseCustomInstallments" type="s:string" />
+    <wsdl:part name="InstallmentRateTable" type="s:string" />
+    <wsdl:part name="ReturnURL" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+    <wsdl:part name="ExtraParam" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="StartHostedPaymentProcessHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCStartHostedPaymentProcessResult" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHostedPaymentProcessHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="MobilexpressTransId" type="s:string" />
+    <wsdl:part name="TotalAmount" type="s:string" />
+    <wsdl:part name="Use3DSecure" type="s:string" />
+    <wsdl:part name="RequestOTP" type="s:string" />
+    <wsdl:part name="RequestCVV" type="s:string" />
+    <wsdl:part name="BasketContent" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHostedPaymentProcessHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCUpdateHostedPaymentProcessResult" />
+  </wsdl:message>
+  <wsdl:message name="StartHostedAccountManagementHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="ViewType" type="s:string" />
+    <wsdl:part name="DesignType" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="CustomerIsLoggedIn" type="s:string" />
+    <wsdl:part name="UseIVRForCardEntry" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+    <wsdl:part name="ExtraParam" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="StartHostedAccountManagementHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCStartHostedAccountManagementResult" />
+  </wsdl:message>
+  <wsdl:message name="GetHostedPaymentProcessStatusHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="MobilexpressTransId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetHostedPaymentProcessStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCGetHostedPaymentProcessStatusResult" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentPlanListHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="PaymentPlanId" type="s:string" />
+    <wsdl:part name="OnlyNotProcessed" type="s:string" />
+    <wsdl:part name="OnlyProcessed" type="s:string" />
+    <wsdl:part name="StartYear" type="s:string" />
+    <wsdl:part name="StartMonth" type="s:string" />
+    <wsdl:part name="EndYear" type="s:string" />
+    <wsdl:part name="EndMonth" type="s:string" />
+    <wsdl:part name="Page" type="s:string" />
+    <wsdl:part name="SortField" type="s:string" />
+    <wsdl:part name="SortDesc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentPlanListHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCPaymentPlanList" />
+  </wsdl:message>
+  <wsdl:message name="SaveBlackListItemHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="CreditCardNumber" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="TCKN" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ReasonCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SaveBlackListItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCSaveBlackListItemResult" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentLinkHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="UseOneClickPayment" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="TotalAmount" type="s:string" />
+    <wsdl:part name="Description" type="s:string" />
+    <wsdl:part name="Use3DSecure" type="s:string" />
+    <wsdl:part name="RequestOTP" type="s:string" />
+    <wsdl:part name="RequestCVV" type="s:string" />
+    <wsdl:part name="UseInstallment" type="s:string" />
+    <wsdl:part name="UseCustomInstallments" type="s:string" />
+    <wsdl:part name="InstallmentRateTable" type="s:string" />
+    <wsdl:part name="ExtraParam" type="s:string" />
+    <wsdl:part name="SendVia" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+    <wsdl:part name="LinkExpireHours" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentLinkHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCCreatePaymentLinkResult" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentLinkForPaymentPlanHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="UseOneClickPayment" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="PaymentPlanLineId" type="s:string" />
+    <wsdl:part name="Use3DSecure" type="s:string" />
+    <wsdl:part name="RequestOTP" type="s:string" />
+    <wsdl:part name="RequestCVV" type="s:string" />
+    <wsdl:part name="UseInstallment" type="s:string" />
+    <wsdl:part name="UseCustomInstallments" type="s:string" />
+    <wsdl:part name="InstallmentRateTable" type="s:string" />
+    <wsdl:part name="SendVia" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+    <wsdl:part name="LinkExpireHours" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentLinkForPaymentPlanHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCCreatePaymentLinkResult" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardSaveLinkHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="SendVia" type="s:string" />
+    <wsdl:part name="Phone" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="POSConfiguration" type="s:string" />
+    <wsdl:part name="LinkExpireHours" type="s:string" />
+    <wsdl:part name="ExtraParam" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardSaveLinkHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCCreateCardSaveLinkResult" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionListHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="POSID" type="s:string" />
+    <wsdl:part name="CardToken" type="s:string" />
+    <wsdl:part name="TransType" type="s:string" />
+    <wsdl:part name="OnlySuccess" type="s:string" />
+    <wsdl:part name="OnlyNotSuccess" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+    <wsdl:part name="Page" type="s:string" />
+    <wsdl:part name="SortField" type="s:string" />
+    <wsdl:part name="SortDesc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionListHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCGetTransactionListResult" />
+  </wsdl:message>
+  <wsdl:message name="TokenInquiryHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="CardNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TokenInquiryHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCTokenInquiryResult" />
+  </wsdl:message>
+  <wsdl:message name="CardInfoInquiryHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="CardToken" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CardInfoInquiryHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCCardInfoInquiryResult" />
+  </wsdl:message>
+  <wsdl:message name="WireTransferRequestHttpPostIn">
+    <wsdl:part name="MerchantKey" type="s:string" />
+    <wsdl:part name="APIpassword" type="s:string" />
+    <wsdl:part name="TransactionId" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="BankAccountID" type="s:string" />
+    <wsdl:part name="TotalAmount" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="CustomerPhone" type="s:string" />
+    <wsdl:part name="CustomerTCKN" type="s:string" />
+    <wsdl:part name="CustomerVal1" type="s:string" />
+    <wsdl:part name="CustomerVal2" type="s:string" />
+    <wsdl:part name="CustomerVal3" type="s:string" />
+    <wsdl:part name="AddressCode" type="s:string" />
+    <wsdl:part name="ClientIP" type="s:string" />
+    <wsdl:part name="ClientUserAgent" type="s:string" />
+    <wsdl:part name="ExtParam" type="s:string" />
+    <wsdl:part name="NotificationURL" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WireTransferRequestHttpPostOut">
+    <wsdl:part name="Body" element="tns:FCWireTransferRequestResult" />
+  </wsdl:message>
+  <wsdl:portType name="FastCheckoutServiceSoap">
+    <wsdl:operation name="SendOTPForCardSave">
+      <wsdl:input message="tns:SendOTPForCardSaveSoapIn" />
+      <wsdl:output message="tns:SendOTPForCardSaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <wsdl:input message="tns:SaveCreditCardSoapIn" />
+      <wsdl:output message="tns:SaveCreditCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <wsdl:input message="tns:SaveCustomerSoapIn" />
+      <wsdl:output message="tns:SaveCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomer">
+      <wsdl:input message="tns:FindCustomerSoapIn" />
+      <wsdl:output message="tns:FindCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSInfo">
+      <wsdl:input message="tns:SavePOSInfoSoapIn" />
+      <wsdl:output message="tns:SavePOSInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPOSInfoList">
+      <wsdl:input message="tns:GetPOSInfoListSoapIn" />
+      <wsdl:output message="tns:GetPOSInfoListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentPlanCardUpdate">
+      <wsdl:input message="tns:PaymentPlanCardUpdateSoapIn" />
+      <wsdl:output message="tns:PaymentPlanCardUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditCardList">
+      <wsdl:input message="tns:GetCreditCardListSoapIn" />
+      <wsdl:output message="tns:GetCreditCardListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBankOfBINNumber">
+      <wsdl:input message="tns:GetBankOfBINNumberSoapIn" />
+      <wsdl:output message="tns:GetBankOfBINNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOTPForCardList">
+      <wsdl:input message="tns:SendOTPForCardListSoapIn" />
+      <wsdl:output message="tns:SendOTPForCardListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAndGetCardList">
+      <wsdl:input message="tns:VerifyAndGetCardListSoapIn" />
+      <wsdl:output message="tns:VerifyAndGetCardListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <wsdl:input message="tns:DeleteCreditCardSoapIn" />
+      <wsdl:output message="tns:DeleteCreditCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCardsOfCustomer">
+      <wsdl:input message="tns:DeleteAllCardsOfCustomerSoapIn" />
+      <wsdl:output message="tns:DeleteAllCardsOfCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiry">
+      <wsdl:input message="tns:LoyaltyPointInquirySoapIn" />
+      <wsdl:output message="tns:LoyaltyPointInquirySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiryWithCard">
+      <wsdl:input message="tns:LoyaltyPointInquiryWithCardSoapIn" />
+      <wsdl:output message="tns:LoyaltyPointInquiryWithCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <wsdl:input message="tns:ProcessPaymentSoapIn" />
+      <wsdl:output message="tns:ProcessPaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPaymentWithCard">
+      <wsdl:input message="tns:ProcessPaymentWithCardSoapIn" />
+      <wsdl:output message="tns:ProcessPaymentWithCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentInquiry">
+      <wsdl:input message="tns:PaymentInquirySoapIn" />
+      <wsdl:output message="tns:PaymentInquirySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcess">
+      <wsdl:input message="tns:FinishPaymentProcessSoapIn" />
+      <wsdl:output message="tns:FinishPaymentProcessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcessWithCard">
+      <wsdl:input message="tns:FinishPaymentProcessWithCardSoapIn" />
+      <wsdl:output message="tns:FinishPaymentProcessWithCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNotification">
+      <wsdl:input message="tns:ValidateNotificationSoapIn" />
+      <wsdl:output message="tns:ValidateNotificationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedPaymentProcess">
+      <wsdl:input message="tns:StartHostedPaymentProcessSoapIn" />
+      <wsdl:output message="tns:StartHostedPaymentProcessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHostedPaymentProcess">
+      <wsdl:input message="tns:UpdateHostedPaymentProcessSoapIn" />
+      <wsdl:output message="tns:UpdateHostedPaymentProcessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedAccountManagement">
+      <wsdl:input message="tns:StartHostedAccountManagementSoapIn" />
+      <wsdl:output message="tns:StartHostedAccountManagementSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHostedPaymentProcessStatus">
+      <wsdl:input message="tns:GetHostedPaymentProcessStatusSoapIn" />
+      <wsdl:output message="tns:GetHostedPaymentProcessStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePaymentPlan">
+      <wsdl:input message="tns:SavePaymentPlanSoapIn" />
+      <wsdl:output message="tns:SavePaymentPlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentPlanList">
+      <wsdl:input message="tns:GetPaymentPlanListSoapIn" />
+      <wsdl:output message="tns:GetPaymentPlanListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBlackListItem">
+      <wsdl:input message="tns:SaveBlackListItemSoapIn" />
+      <wsdl:output message="tns:SaveBlackListItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLink">
+      <wsdl:input message="tns:CreatePaymentLinkSoapIn" />
+      <wsdl:output message="tns:CreatePaymentLinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLinkForPaymentPlan">
+      <wsdl:input message="tns:CreatePaymentLinkForPaymentPlanSoapIn" />
+      <wsdl:output message="tns:CreatePaymentLinkForPaymentPlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardSaveLink">
+      <wsdl:input message="tns:CreateCardSaveLinkSoapIn" />
+      <wsdl:output message="tns:CreateCardSaveLinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionList">
+      <wsdl:input message="tns:GetTransactionListSoapIn" />
+      <wsdl:output message="tns:GetTransactionListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TokenInquiry">
+      <wsdl:input message="tns:TokenInquirySoapIn" />
+      <wsdl:output message="tns:TokenInquirySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CardInfoInquiry">
+      <wsdl:input message="tns:CardInfoInquirySoapIn" />
+      <wsdl:output message="tns:CardInfoInquirySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WireTransferRequest">
+      <wsdl:input message="tns:WireTransferRequestSoapIn" />
+      <wsdl:output message="tns:WireTransferRequestSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FastCheckoutServiceHttpPost">
+    <wsdl:operation name="SendOTPForCardSave">
+      <wsdl:input message="tns:SendOTPForCardSaveHttpPostIn" />
+      <wsdl:output message="tns:SendOTPForCardSaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <wsdl:input message="tns:SaveCreditCardHttpPostIn" />
+      <wsdl:output message="tns:SaveCreditCardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <wsdl:input message="tns:SaveCustomerHttpPostIn" />
+      <wsdl:output message="tns:SaveCustomerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomer">
+      <wsdl:input message="tns:FindCustomerHttpPostIn" />
+      <wsdl:output message="tns:FindCustomerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSInfo">
+      <wsdl:input message="tns:SavePOSInfoHttpPostIn" />
+      <wsdl:output message="tns:SavePOSInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentPlanCardUpdate">
+      <wsdl:input message="tns:PaymentPlanCardUpdateHttpPostIn" />
+      <wsdl:output message="tns:PaymentPlanCardUpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditCardList">
+      <wsdl:input message="tns:GetCreditCardListHttpPostIn" />
+      <wsdl:output message="tns:GetCreditCardListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBankOfBINNumber">
+      <wsdl:input message="tns:GetBankOfBINNumberHttpPostIn" />
+      <wsdl:output message="tns:GetBankOfBINNumberHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOTPForCardList">
+      <wsdl:input message="tns:SendOTPForCardListHttpPostIn" />
+      <wsdl:output message="tns:SendOTPForCardListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAndGetCardList">
+      <wsdl:input message="tns:VerifyAndGetCardListHttpPostIn" />
+      <wsdl:output message="tns:VerifyAndGetCardListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <wsdl:input message="tns:DeleteCreditCardHttpPostIn" />
+      <wsdl:output message="tns:DeleteCreditCardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCardsOfCustomer">
+      <wsdl:input message="tns:DeleteAllCardsOfCustomerHttpPostIn" />
+      <wsdl:output message="tns:DeleteAllCardsOfCustomerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiry">
+      <wsdl:input message="tns:LoyaltyPointInquiryHttpPostIn" />
+      <wsdl:output message="tns:LoyaltyPointInquiryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiryWithCard">
+      <wsdl:input message="tns:LoyaltyPointInquiryWithCardHttpPostIn" />
+      <wsdl:output message="tns:LoyaltyPointInquiryWithCardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <wsdl:input message="tns:ProcessPaymentHttpPostIn" />
+      <wsdl:output message="tns:ProcessPaymentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPaymentWithCard">
+      <wsdl:input message="tns:ProcessPaymentWithCardHttpPostIn" />
+      <wsdl:output message="tns:ProcessPaymentWithCardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentInquiry">
+      <wsdl:input message="tns:PaymentInquiryHttpPostIn" />
+      <wsdl:output message="tns:PaymentInquiryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcess">
+      <wsdl:input message="tns:FinishPaymentProcessHttpPostIn" />
+      <wsdl:output message="tns:FinishPaymentProcessHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcessWithCard">
+      <wsdl:input message="tns:FinishPaymentProcessWithCardHttpPostIn" />
+      <wsdl:output message="tns:FinishPaymentProcessWithCardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNotification">
+      <wsdl:input message="tns:ValidateNotificationHttpPostIn" />
+      <wsdl:output message="tns:ValidateNotificationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedPaymentProcess">
+      <wsdl:input message="tns:StartHostedPaymentProcessHttpPostIn" />
+      <wsdl:output message="tns:StartHostedPaymentProcessHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHostedPaymentProcess">
+      <wsdl:input message="tns:UpdateHostedPaymentProcessHttpPostIn" />
+      <wsdl:output message="tns:UpdateHostedPaymentProcessHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedAccountManagement">
+      <wsdl:input message="tns:StartHostedAccountManagementHttpPostIn" />
+      <wsdl:output message="tns:StartHostedAccountManagementHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHostedPaymentProcessStatus">
+      <wsdl:input message="tns:GetHostedPaymentProcessStatusHttpPostIn" />
+      <wsdl:output message="tns:GetHostedPaymentProcessStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentPlanList">
+      <wsdl:input message="tns:GetPaymentPlanListHttpPostIn" />
+      <wsdl:output message="tns:GetPaymentPlanListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBlackListItem">
+      <wsdl:input message="tns:SaveBlackListItemHttpPostIn" />
+      <wsdl:output message="tns:SaveBlackListItemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLink">
+      <wsdl:input message="tns:CreatePaymentLinkHttpPostIn" />
+      <wsdl:output message="tns:CreatePaymentLinkHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLinkForPaymentPlan">
+      <wsdl:input message="tns:CreatePaymentLinkForPaymentPlanHttpPostIn" />
+      <wsdl:output message="tns:CreatePaymentLinkForPaymentPlanHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardSaveLink">
+      <wsdl:input message="tns:CreateCardSaveLinkHttpPostIn" />
+      <wsdl:output message="tns:CreateCardSaveLinkHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionList">
+      <wsdl:input message="tns:GetTransactionListHttpPostIn" />
+      <wsdl:output message="tns:GetTransactionListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TokenInquiry">
+      <wsdl:input message="tns:TokenInquiryHttpPostIn" />
+      <wsdl:output message="tns:TokenInquiryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CardInfoInquiry">
+      <wsdl:input message="tns:CardInfoInquiryHttpPostIn" />
+      <wsdl:output message="tns:CardInfoInquiryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WireTransferRequest">
+      <wsdl:input message="tns:WireTransferRequestHttpPostIn" />
+      <wsdl:output message="tns:WireTransferRequestHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FastCheckoutServiceSoap" type="tns:FastCheckoutServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendOTPForCardSave">
+      <soap:operation soapAction="http://tempuri.org/SendOTPForCardSave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <soap:operation soapAction="http://tempuri.org/SaveCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <soap:operation soapAction="http://tempuri.org/SaveCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomer">
+      <soap:operation soapAction="http://tempuri.org/FindCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSInfo">
+      <soap:operation soapAction="http://tempuri.org/SavePOSInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPOSInfoList">
+      <soap:operation soapAction="http://tempuri.org/GetPOSInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentPlanCardUpdate">
+      <soap:operation soapAction="http://tempuri.org/PaymentPlanCardUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditCardList">
+      <soap:operation soapAction="http://tempuri.org/GetCreditCardList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBankOfBINNumber">
+      <soap:operation soapAction="http://tempuri.org/GetBankOfBINNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOTPForCardList">
+      <soap:operation soapAction="http://tempuri.org/SendOTPForCardList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAndGetCardList">
+      <soap:operation soapAction="http://tempuri.org/VerifyAndGetCardList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <soap:operation soapAction="http://tempuri.org/DeleteCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCardsOfCustomer">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllCardsOfCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiry">
+      <soap:operation soapAction="http://tempuri.org/LoyaltyPointInquiry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiryWithCard">
+      <soap:operation soapAction="http://tempuri.org/LoyaltyPointInquiryWithCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <soap:operation soapAction="http://tempuri.org/ProcessPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPaymentWithCard">
+      <soap:operation soapAction="http://tempuri.org/ProcessPaymentWithCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentInquiry">
+      <soap:operation soapAction="http://tempuri.org/PaymentInquiry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcess">
+      <soap:operation soapAction="http://tempuri.org/FinishPaymentProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcessWithCard">
+      <soap:operation soapAction="http://tempuri.org/FinishPaymentProcessWithCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNotification">
+      <soap:operation soapAction="http://tempuri.org/ValidateNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedPaymentProcess">
+      <soap:operation soapAction="http://tempuri.org/StartHostedPaymentProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHostedPaymentProcess">
+      <soap:operation soapAction="http://tempuri.org/UpdateHostedPaymentProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedAccountManagement">
+      <soap:operation soapAction="http://tempuri.org/StartHostedAccountManagement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHostedPaymentProcessStatus">
+      <soap:operation soapAction="http://tempuri.org/GetHostedPaymentProcessStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePaymentPlan">
+      <soap:operation soapAction="http://tempuri.org/SavePaymentPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentPlanList">
+      <soap:operation soapAction="http://tempuri.org/GetPaymentPlanList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBlackListItem">
+      <soap:operation soapAction="http://tempuri.org/SaveBlackListItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLink">
+      <soap:operation soapAction="http://tempuri.org/CreatePaymentLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLinkForPaymentPlan">
+      <soap:operation soapAction="http://tempuri.org/CreatePaymentLinkForPaymentPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardSaveLink">
+      <soap:operation soapAction="http://tempuri.org/CreateCardSaveLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionList">
+      <soap:operation soapAction="http://tempuri.org/GetTransactionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TokenInquiry">
+      <soap:operation soapAction="http://tempuri.org/TokenInquiry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardInfoInquiry">
+      <soap:operation soapAction="http://tempuri.org/CardInfoInquiry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WireTransferRequest">
+      <soap:operation soapAction="http://tempuri.org/WireTransferRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FastCheckoutServiceSoap12" type="tns:FastCheckoutServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendOTPForCardSave">
+      <soap12:operation soapAction="http://tempuri.org/SendOTPForCardSave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <soap12:operation soapAction="http://tempuri.org/SaveCreditCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <soap12:operation soapAction="http://tempuri.org/SaveCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomer">
+      <soap12:operation soapAction="http://tempuri.org/FindCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSInfo">
+      <soap12:operation soapAction="http://tempuri.org/SavePOSInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPOSInfoList">
+      <soap12:operation soapAction="http://tempuri.org/GetPOSInfoList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentPlanCardUpdate">
+      <soap12:operation soapAction="http://tempuri.org/PaymentPlanCardUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditCardList">
+      <soap12:operation soapAction="http://tempuri.org/GetCreditCardList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBankOfBINNumber">
+      <soap12:operation soapAction="http://tempuri.org/GetBankOfBINNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOTPForCardList">
+      <soap12:operation soapAction="http://tempuri.org/SendOTPForCardList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAndGetCardList">
+      <soap12:operation soapAction="http://tempuri.org/VerifyAndGetCardList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCreditCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCardsOfCustomer">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllCardsOfCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiry">
+      <soap12:operation soapAction="http://tempuri.org/LoyaltyPointInquiry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiryWithCard">
+      <soap12:operation soapAction="http://tempuri.org/LoyaltyPointInquiryWithCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <soap12:operation soapAction="http://tempuri.org/ProcessPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPaymentWithCard">
+      <soap12:operation soapAction="http://tempuri.org/ProcessPaymentWithCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentInquiry">
+      <soap12:operation soapAction="http://tempuri.org/PaymentInquiry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcess">
+      <soap12:operation soapAction="http://tempuri.org/FinishPaymentProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcessWithCard">
+      <soap12:operation soapAction="http://tempuri.org/FinishPaymentProcessWithCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNotification">
+      <soap12:operation soapAction="http://tempuri.org/ValidateNotification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedPaymentProcess">
+      <soap12:operation soapAction="http://tempuri.org/StartHostedPaymentProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHostedPaymentProcess">
+      <soap12:operation soapAction="http://tempuri.org/UpdateHostedPaymentProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedAccountManagement">
+      <soap12:operation soapAction="http://tempuri.org/StartHostedAccountManagement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHostedPaymentProcessStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetHostedPaymentProcessStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePaymentPlan">
+      <soap12:operation soapAction="http://tempuri.org/SavePaymentPlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentPlanList">
+      <soap12:operation soapAction="http://tempuri.org/GetPaymentPlanList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBlackListItem">
+      <soap12:operation soapAction="http://tempuri.org/SaveBlackListItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLink">
+      <soap12:operation soapAction="http://tempuri.org/CreatePaymentLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLinkForPaymentPlan">
+      <soap12:operation soapAction="http://tempuri.org/CreatePaymentLinkForPaymentPlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardSaveLink">
+      <soap12:operation soapAction="http://tempuri.org/CreateCardSaveLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionList">
+      <soap12:operation soapAction="http://tempuri.org/GetTransactionList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TokenInquiry">
+      <soap12:operation soapAction="http://tempuri.org/TokenInquiry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardInfoInquiry">
+      <soap12:operation soapAction="http://tempuri.org/CardInfoInquiry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WireTransferRequest">
+      <soap12:operation soapAction="http://tempuri.org/WireTransferRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FastCheckoutServiceHttpPost" type="tns:FastCheckoutServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SendOTPForCardSave">
+      <http:operation location="/SendOTPForCardSave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <http:operation location="/SaveCreditCard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <http:operation location="/SaveCustomer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomer">
+      <http:operation location="/FindCustomer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSInfo">
+      <http:operation location="/SavePOSInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentPlanCardUpdate">
+      <http:operation location="/PaymentPlanCardUpdate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditCardList">
+      <http:operation location="/GetCreditCardList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBankOfBINNumber">
+      <http:operation location="/GetBankOfBINNumber" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOTPForCardList">
+      <http:operation location="/SendOTPForCardList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAndGetCardList">
+      <http:operation location="/VerifyAndGetCardList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <http:operation location="/DeleteCreditCard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCardsOfCustomer">
+      <http:operation location="/DeleteAllCardsOfCustomer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiry">
+      <http:operation location="/LoyaltyPointInquiry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoyaltyPointInquiryWithCard">
+      <http:operation location="/LoyaltyPointInquiryWithCard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <http:operation location="/ProcessPayment" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPaymentWithCard">
+      <http:operation location="/ProcessPaymentWithCard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentInquiry">
+      <http:operation location="/PaymentInquiry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcess">
+      <http:operation location="/FinishPaymentProcess" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishPaymentProcessWithCard">
+      <http:operation location="/FinishPaymentProcessWithCard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateNotification">
+      <http:operation location="/ValidateNotification" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedPaymentProcess">
+      <http:operation location="/StartHostedPaymentProcess" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHostedPaymentProcess">
+      <http:operation location="/UpdateHostedPaymentProcess" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartHostedAccountManagement">
+      <http:operation location="/StartHostedAccountManagement" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHostedPaymentProcessStatus">
+      <http:operation location="/GetHostedPaymentProcessStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentPlanList">
+      <http:operation location="/GetPaymentPlanList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBlackListItem">
+      <http:operation location="/SaveBlackListItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLink">
+      <http:operation location="/CreatePaymentLink" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePaymentLinkForPaymentPlan">
+      <http:operation location="/CreatePaymentLinkForPaymentPlan" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardSaveLink">
+      <http:operation location="/CreateCardSaveLink" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionList">
+      <http:operation location="/GetTransactionList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TokenInquiry">
+      <http:operation location="/TokenInquiry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardInfoInquiry">
+      <http:operation location="/CardInfoInquiry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WireTransferRequest">
+      <http:operation location="/WireTransferRequest" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FastCheckoutService">
+    <wsdl:port name="FastCheckoutServiceSoap" binding="tns:FastCheckoutServiceSoap">
+      <soap:address location="https://test.mobilexpress.com.tr/checkout/v7/FastCheckoutService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FastCheckoutServiceSoap12" binding="tns:FastCheckoutServiceSoap12">
+      <soap12:address location="https://test.mobilexpress.com.tr/checkout/v7/FastCheckoutService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FastCheckoutServiceHttpPost" binding="tns:FastCheckoutServiceHttpPost">
+      <http:address location="https://test.mobilexpress.com.tr/checkout/v7/FastCheckoutService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
